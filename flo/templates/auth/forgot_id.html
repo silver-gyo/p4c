@@ -1,0 +1,29 @@
+
+<!-- 아이디 찾기 -->
+
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <h3 class="my-3 border-bottom pb-2">아이디 찾기</h3>
+    <form method="post">
+        {{ form.csrf_token }}
+        {% include "errors/form_errors.html" %}
+
+        <div class="mb-3">
+            <label for="name">이름</label>
+            <input type="text" class="form-control" name="name" id="name"
+                   value="{{ form.name.data or '' }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="email">이메일</label>
+            <input type="email" class="form-control" name="email" id="email"
+                   value="{{ form.email.data or '' }}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">아이디 찾기</button>
+
+    </form>
+</div>
+{% endblock %}

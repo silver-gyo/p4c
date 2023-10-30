@@ -1,0 +1,52 @@
+
+<!-- 공지 작성하기 -->
+
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- 본문  -->
+<div class="container">
+    <h3 class="my-3 border-bottom py-2">공지 작성</h3>
+    <form  method="post" class="my-3" enctype="multipart/form-data">
+
+        <!-- CSRF 토큰 처리 -->
+        {{ form.csrf_token }}
+
+        <!-- 에러 -->
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field, errors in form.errors.items() %}
+            <strong>{{ form[field].label }}</strong>
+            <ul>
+                {% for error in errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+        <!-- 게시글 작성 -->
+        <div class="mb-3">
+            <label for="title">제목</label>
+            <input type="text" class="form-control" name="title" id="title" value="{{ form.title.data or '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="content">내용</label>
+            <textarea class="form-control" name="content" id="content" rows="10">{{ form.content.data or '' }}</textarea>
+        </div>
+
+        <!-- 파일 업로드 -->
+        <div class="form-group">
+            <label for="fileupload">파일 업로드</label>
+            <input type="file" class="form-control" name="fileupload" id="fileupload">
+        </div>
+
+        {% if g.user.id == 'iamadmin' %}
+            <button class="btn btn-primary" type="submit" id="button-addon2">등록</button>
+        {% endif %}
+    </form>
+</div>
+
+{% endblock %}
