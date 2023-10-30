@@ -105,7 +105,7 @@ def join():
                 )
 
                 # 관리자 아이디 설정해주기
-                if id == 'iamadmin':
+                if id == '관리자':
                     user.perm = 'Y'
 
                 db.session.add(user)

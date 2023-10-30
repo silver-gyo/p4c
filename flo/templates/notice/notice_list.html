@@ -135,7 +135,7 @@
     </ul>
 
     <!-- 작성 버튼 -->
-    {% if g.user.id == 'iamadmin' %}
+    {% if g.user.id == '관리자' %}
         <a href="{{ url_for('notice.write') }}" class="btn btn-primary">게시글 작성</a>
     {% endif %}
 </div>

@@ -60,7 +60,7 @@
             </a>
 
             <!-- 사용자 검증 -->
-            {% if g.user == notice.user or g.user.id == 'iamadmin'%}
+            {% if g.user == notice.user or g.user.id == '관리자'%}
 
             <!-- 수정 -->
             <a href="{{ url_for('notice.update', notice_idx=notice.idx) }}"

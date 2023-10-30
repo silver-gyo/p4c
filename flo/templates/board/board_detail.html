@@ -60,7 +60,7 @@
             </a>
 
             <!-- 사용자 검증 -->
-            {% if g.user == board.user or g.user.id == 'iamadmin'%}
+            {% if g.user == board.user or g.user.id == '관리자'%}
 
             <!-- 수정 -->
             <a href="{{ url_for('board.update', board_idx=board.idx) }}"
@@ -109,7 +109,7 @@
 
             <!-- 댓글 삭제 -->
             <div class="my-3">
-                {% if g.user == comment.user or g.user.id == 'iamadmin' %}
+                {% if g.user == comment.user or g.user.id == '관리자' %}
                 <a href="#" class="delete btn btn-sm btn-outline-secondary "
                    data-uri="{{ url_for('comment.delete', comment_idx=comment.idx) }}">삭제</a>
                 {% endif %}

@@ -12,7 +12,7 @@ from flo.views.auth_view import login_required
 
 
 # 파일 업로드
-UPLOAD_FOLDER = os.path.join(os.getcwd(), 'C:/project/myproject/flo/static/img/') # 경로
+UPLOAD_FOLDER = os.path.join(os.getcwd(), '') # 경로
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])                   # 허용 가능한 확장자
 
 # 확장자 검증
@@ -82,7 +82,7 @@ def write():
             file.save(file_path)  # 파일 저장
 
         # 관리자가 아니면 등록 되지 않음
-        if g.user.id == 'iamadmin':
+        if g.user.id == '관리자':
             notice = Notice(
                 title=form.title.data,
                 content=form.content.data,
@@ -170,7 +170,7 @@ def delete(notice_idx):
         notice = Notice.query.get(notice_idx)
 
         # 사용자 확인
-        if g.user != notice.user or not g.user.id == 'iamadmin':
+        if g.user != notice.user or not g.user.id == '관리자':
             flash('권한이 없습니다')
             return redirect(url_for('notice.detail', notice_idx=notice_idx))
 

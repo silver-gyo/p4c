@@ -33,7 +33,6 @@ class UserCreateForm(FlaskForm):
     name = StringField('이 름')
     email = EmailField('이메일', validators=[Email()])
     member_name = StringField('닉네임')
-    verification_code = StringField('인증 코드')
     perm = 1
 
 class UserLoginForm(FlaskForm):

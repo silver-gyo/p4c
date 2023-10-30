@@ -13,7 +13,7 @@ from flo.views.auth_view import login_required
 
 
 # 파일 업로드
-UPLOAD_FOLDER = os.path.join(os.getcwd(), 'C:/project/myproject/flo/static/img/') # 경로
+UPLOAD_FOLDER = os.path.join(os.getcwd(), '') # 경로
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])                   # 허용 가능한 확장자
 
 # 확장자 검증
@@ -127,7 +127,7 @@ def secret(board_idx):
         board = Board.query.get(board_idx)
 
         # 게시글 조회
-        if board.posting_password == 'NULL' or g.user.id == 'iamadmin':
+        if board.posting_password == 'NULL' or g.user.id == '관리자':
             return render_template('board/board_detail.html', board=board, form=form)
 
         # 비밀번호 검증
